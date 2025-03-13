@@ -3,27 +3,34 @@ import { isValidUrl } from '$lib/utils/isValidUrl';
 type Store = {
 	resource: string | null;
 	urls: string[];
-	filterDate: string;
-	updateFrequency: string;
+	filterDate: Date;
+	updateFrequency: Frequency;
 	updateTime: string;
 };
-
-export const updateFrequencyOptions = [
+export enum Frequency {
+	Daily = 'daily',
+	Weekly = 'weekly'
+}
+export const frequencyLabels = {
+	[Frequency.Daily]: 'Daily',
+	[Frequency.Weekly]: 'Weekly'
+};
+export const frequencyOptions = [
 	{
 		label: 'Daily',
-		value: 'daily'
+		value: Frequency.Daily
 	},
 	{
 		label: 'Weekly',
-		value: 'weekly'
+		value: Frequency.Weekly
 	}
 ];
 
 export const tableStore = $state<Store>({
 	resource: null,
-	urls: [''],
-	filterDate: new Date().toISOString(),
-	updateFrequency: 'daily',
+	urls: ['https://superforms.rocks/'],
+	filterDate: new Date(),
+	updateFrequency: Frequency.Daily,
 	updateTime: '12:00'
 });
 

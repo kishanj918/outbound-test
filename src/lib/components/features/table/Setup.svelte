@@ -36,7 +36,7 @@
 					bind:value={url}
 					placeholder="https://www.linkedin.com/in/johndoe"
 					class={[
-						'ovh h-11 rounded-r-none border-gray-300 outline-none focus:!outline-none',
+						'h-11 rounded-r-none border-gray-300 outline-none focus:!outline-none',
 						url.length > 0 && !isValidUrl(url) && 'border-red-500'
 					]}
 				/>

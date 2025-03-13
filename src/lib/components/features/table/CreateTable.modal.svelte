@@ -2,7 +2,8 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import Separator from '$lib/components/ui/separator/separator.svelte';
-	import { canContinue, currentStep, nextStep } from '$lib/store/table.svelte';
+	import { canContinue, currentStep, nextStep, previousStep } from '$lib/store/table.svelte';
+	import Configure from './Configure.svelte';
 	import ResourceSelector from './ResourceSelector.svelte';
 	import Setup from './Setup.svelte';
 	let { isOpen = $bindable(false) } = $props();
@@ -20,13 +21,20 @@
 		{#if currentStep.value === 1}
 			<Setup />
 		{/if}
+		{#if currentStep.value === 2}
+			<Configure />
+		{/if}
 		<div
 			class="absolute bottom-0 left-6 right-6 flex justify-between border-t border-gray-200 py-4"
 		>
 			<Button size="sm" variant="outline" onclick={() => (isOpen = false)}>Cancel</Button>
-			<Button size="sm" variant="brand" disabled={!canContinue()} onclick={nextStep}
-				>Continue</Button
-			>
+			<div>
+				{#if currentStep.value > 1}<Button variant="ghost" onclick={previousStep}>Back</Button>
+				{/if}
+				<Button size="sm" variant="brand" disabled={!canContinue()} onclick={nextStep}
+					>Continue</Button
+				>
+			</div>
 		</div>
 	</Dialog.Content>
 </Dialog.Root>
