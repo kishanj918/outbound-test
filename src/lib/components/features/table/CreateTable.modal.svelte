@@ -15,7 +15,13 @@
 	}: { isOpen: boolean; onComplete: (data: Store, selectedPostIds: number[]) => void } = $props();
 </script>
 
-<Dialog.Root bind:open={isOpen}>
+<Dialog.Root
+	bind:open={isOpen}
+	onOpenChange={() => {
+		isOpen = false;
+		resetTable();
+	}}
+>
 	<Dialog.Content class="flex h-[800px] max-w-[1008px] flex-col py-6 pt-5">
 		<Dialog.Header>
 			<Dialog.Title class="text-lg font-medium text-gray-900">Create New Table</Dialog.Title>
