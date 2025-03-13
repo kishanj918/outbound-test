@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Checkbox } from '$lib/components/ui/checkbox';
 	import { toggleAllPostsSelection, togglePostSelection } from '$lib/store/table.functions';
 	import { posts, selectedPostsIDs } from '$lib/store/table.svelte';
 </script>
@@ -10,10 +11,9 @@
 				<th
 					class="border-l-0 border-r border-gray-300 px-6 py-1.5 text-left text-xs font-semibold text-gray-600"
 				>
-					<input
-						type="checkbox"
-						class="h-5 w-5 rounded-[6px] border-gray-300"
-						onclick={toggleAllPostsSelection}
+					<Checkbox
+						checked={selectedPostsIDs.value.length === posts.length}
+						onClick={toggleAllPostsSelection}
 					/>
 				</th>
 				<th
@@ -36,14 +36,7 @@
 				{@const isChecked = selectedPostsIDs.value.includes(post.id)}
 				<tr class="border-b border-gray-200">
 					<td class="px-6 py-1.5 text-sm text-gray-600">
-						<input
-							type="checkbox"
-							class="h-5 w-5 rounded-[6px] border border-gray-300 outline-none"
-							checked={isChecked}
-							onclick={() => {
-								togglePostSelection(post.id);
-							}}
-						/>
+						<Checkbox checked={isChecked} onClick={() => togglePostSelection(post.id)} />
 					</td>
 					<td class="px-6 py-1.5 text-sm text-gray-600">{post.post}</td>
 					<td class="px-6 py-1.5 text-sm text-gray-600">{post.author}</td>

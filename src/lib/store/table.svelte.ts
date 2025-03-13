@@ -8,7 +8,7 @@ type Post = {
 export type Store = {
 	resource: string | null;
 	urls: string[];
-	filterDate: Date;
+	filterDate: string;
 	updateFrequency: Frequency;
 	updateTime: string;
 };
@@ -34,7 +34,7 @@ export const frequencyOptions = [
 export const tableStore = $state<Store>({
 	resource: null,
 	urls: ['https://superforms.rocks/'],
-	filterDate: new Date(),
+	filterDate: new Date().toISOString(),
 	updateFrequency: Frequency.Daily,
 	updateTime: '12:00'
 });

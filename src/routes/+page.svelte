@@ -1,6 +1,7 @@
 <script>
 	import CreateTable from '$lib/components/features/table/CreateTable.modal.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
+
 	import Plus from '$lib/icons/Plus.svelte';
 	let isOpen = $state(false);
 </script>
