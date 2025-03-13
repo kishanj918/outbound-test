@@ -27,8 +27,10 @@ const config: Config = {
 				},
 				brand: {
 					DEFAULT: 'hsl(var(--brand) / <alpha-value>)',
-					foreground: 'hsl(var(--brand) / <alpha-value>)'
+					foreground: 'hsl(var(--brand) / <alpha-value>)',
+					100: 'hsl(var(--brand-100) / <alpha-value>)'
 				},
+
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
 					foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)'
@@ -91,6 +93,9 @@ const config: Config = {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'caret-blink': 'caret-blink 1.25s ease-out infinite'
+			},
+			boxShadow: {
+				card: '0px 2px 4px -2px rgba(16, 24, 40, 0.06), 0px 4px 8px -2px rgba(16, 24, 40, 0.1)'
 			}
 		}
 	},
