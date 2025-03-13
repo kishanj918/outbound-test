@@ -9,4 +9,9 @@
 	<Plus />
 	<Button variant="brand" size="sm" onclick={() => (isOpen = true)}>Create New Table</Button>
 </main>
-<CreateTable bind:isOpen />
+<CreateTable
+	bind:isOpen
+	onComplete={(data, selectedPostIds) => {
+		console.log(data, selectedPostIds);
+	}}
+/>

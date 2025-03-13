@@ -1,6 +1,11 @@
-import { isValidUrl } from '$lib/utils/isValidUrl';
-
-type Store = {
+import data from '$lib/data/posts.mock.json';
+type Post = {
+	id: number;
+	post: string;
+	author: string;
+	engagements: number;
+};
+export type Store = {
 	resource: string | null;
 	urls: string[];
 	filterDate: Date;
@@ -33,33 +38,7 @@ export const tableStore = $state<Store>({
 	updateFrequency: Frequency.Daily,
 	updateTime: '12:00'
 });
+export const posts = $state<Post[]>(data);
+export const selectedPostsIDs = $state<{ value: number[] }>({ value: [] });
 
 export const currentStep = $state({ value: 0 });
-export const nextStep = () => {
-	currentStep.value += 1;
-};
-export const previousStep = () => {
-	currentStep.value -= 1;
-};
-export const addUrl = (url: string) => {
-	tableStore.urls.push(url);
-};
-export const removeUrl = (index: number) => {
-	tableStore.urls.splice(index, 1);
-};
-export const canContinue = () => {
-	switch (currentStep.value) {
-		case 0:
-			return tableStore.resource !== null;
-		case 1:
-			return tableStore.urls.length > 0 && tableStore.urls.every((url) => isValidUrl(url));
-		case 2:
-			return (
-				tableStore.filterDate.length > 0 &&
-				tableStore.updateFrequency.length > 0 &&
-				tableStore.updateTime.length > 0
-			);
-		default:
-			return true;
-	}
-};

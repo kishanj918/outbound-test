@@ -4,10 +4,11 @@
 	import UserPlus from '$lib/icons/UserPlus.svelte';
 	import Stepper from './Stepper.svelte';
 	import { Input } from '$lib/components/ui/input/index.js';
-	import { addUrl, removeUrl, tableStore } from '$lib/store/table.svelte';
+	import { tableStore } from '$lib/store/table.svelte';
 	import Cross from '$lib/icons/Cross.svelte';
 	import Plus from '$lib/icons/Plus.svelte';
 	import { isValidUrl } from '$lib/utils/isValidUrl';
+	import { addUrl, removeUrl } from '$lib/store/table.functions';
 </script>
 
 <Stepper />

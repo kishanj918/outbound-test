@@ -19,7 +19,12 @@
 			Setup
 		</span>
 	</span>
-	<Separator class="ml-3 mt-4 flex h-[2px] w-20 self-start" />
+	<Separator
+		class={[
+			'ml-3 mt-4 flex h-0.5 w-20 self-start',
+			currentStep.value > 1 ? 'bg-brand' : 'bg-[#A1AEBE]'
+		]}
+	/>
 	<span class="flex flex-col items-center">
 		<span
 			class={[
@@ -33,7 +38,12 @@
 			>Configure</span
 		>
 	</span>
-	<Separator class="mr-2 mt-4 flex h-[2px] w-20 self-start" />
+	<Separator
+		class={[
+			'ml-3 mt-4 flex h-0.5 w-20 self-start',
+			currentStep.value > 2 ? 'bg-brand' : 'bg-[#A1AEBE]'
+		]}
+	/>
 	<span class="flex flex-col items-center">
 		<span
 			class={[
